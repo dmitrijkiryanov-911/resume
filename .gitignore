@@ -1,0 +1,14 @@
+# Рабочие файлы — не для публичного сайта
+TASK-*.md
+_out_*.json
+responses.json
+build_desk.py
+.media/
+
+# Мусор ОС/редакторов
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+.vscode/
+.idea/
