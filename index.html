@@ -96,10 +96,10 @@
   .lead b{color:var(--ink);font-weight:620}
 
   /* ── CASES ── */
-  .case{border:1px solid var(--line);border-radius:16px;padding:19px 20px;margin-bottom:13px;background:#fff;
-    transition:transform .18s ease,box-shadow .18s ease}
+  .case{border:1px solid var(--line);border-radius:16px;margin-bottom:13px;background:#fff;overflow:hidden;
+    transition:box-shadow .18s ease}
   .case:last-child{margin-bottom:0}
-  .case:hover{transform:translateY(-2px);box-shadow:var(--sh-2)}
+  .case:hover{box-shadow:var(--sh-2)}
   .case.flag{background:linear-gradient(155deg,#fff, #FAF4F0);border-color:rgba(176,101,74,.18)}
   .case .cniche{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);font-weight:600;margin-bottom:5px}
   .case .ct{font-weight:640;font-size:17px;color:var(--ink);letter-spacing:-.01em;margin-bottom:10px;line-height:1.3}
@@ -121,6 +121,24 @@
   .dyn{margin-top:18px;padding-top:18px;border-top:1px solid var(--line-soft)}
   .minihead{font-size:12px;font-weight:620;color:var(--ink2);margin-bottom:6px}
   .cheklead{margin-top:18px;padding-top:16px;border-top:1px solid var(--line-soft)}
+
+  /* ── аккордеон кейсов ── */
+  .hint{font-size:12.5px;color:var(--dim);margin:-4px 0 14px}
+  .chead{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr auto;align-items:center;gap:14px;padding:18px 20px;transition:background .18s ease}
+  .chead::-webkit-details-marker{display:none}
+  .chead:hover{background:rgba(176,101,74,.035)}
+  .chead .cniche{margin-bottom:5px}
+  .chead .ct{margin-bottom:0}
+  .chev{width:22px;height:22px;flex:none;color:var(--acc);transition:transform .25s ease}
+  details[open] .chev{transform:rotate(180deg)}
+  .cbody{padding:2px 20px 20px}
+  details[open] .cbody{animation:reveal .25s ease}
+  @keyframes reveal{from{opacity:0}to{opacity:1}}
+  .glabel{font-size:12px;font-weight:620;color:var(--ink2);margin-top:18px;margin-bottom:2px}
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:8px}
+  .gallery a{display:block;border-radius:11px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--sh-1);transition:transform .18s ease,box-shadow .18s ease}
+  .gallery a:hover{transform:translateY(-2px);box-shadow:var(--sh-2)}
+  .gallery img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}
   .metrics{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
   .metrics span{background:var(--acc-soft);color:var(--acc-ink);border-radius:9px;padding:6px 11px;font-size:13px;font-weight:580}
   .funnel{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:14px;font-size:13px;color:var(--muted)}
@@ -176,6 +194,9 @@
     .ckpis{grid-template-columns:repeat(2,1fr)}
     .ckpis .ckpi:first-child{grid-column:1 / -1}
     .delta{grid-template-columns:1fr}
+    .gallery{grid-template-columns:repeat(2,1fr)}
+    .chead{padding:16px 16px}
+    .cbody{padding:2px 16px 18px}
     .prod{grid-template-columns:1fr}
   }
 </style>
@@ -217,11 +238,18 @@
   <!-- КЕЙСЫ -->
   <section class="sec rv">
     <h2>Кейсы</h2>
+    <div class="hint">Нажми на кейс, чтобы развернуть детали и графики.</div>
 
     <!-- Кейс — жилетка (свежий, с недельной аналитикой) -->
-    <article class="case">
-      <div class="cniche">Женские жилетки · весенний сезон 2026</div>
-      <div class="ct">Вывел новинку в ТОП-18 категории за месяц — 19,8 млн ₽ оборота</div>
+    <details class="case">
+      <summary class="chead">
+        <div class="chead-txt">
+          <div class="cniche">Женские жилетки · весенний сезон 2026</div>
+          <div class="ct">Вывел новинку в ТОП-18 категории за месяц — 19,8 млн ₽ оборота</div>
+        </div>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="cbody">
 
       <div class="ckpis">
         <div class="ckpi accent"><div class="num"><em>ТОП-18</em></div><div class="lbl">в категории «женские жилетки», март 2026</div></div>
@@ -320,15 +348,22 @@
       </div>
 
       <div class="frame">ROI 191% = валовая прибыль на шт ÷ себестоимость. Рентабельность 31% = валовая прибыль на шт ÷ стоимость выкупленного товара (после СПП). % выкупа считается на срезе 31.03 — часть мартовских заказов выкупается позже.</div>
-    </article>
+      </div>
+    </details>
 
     <!-- Кейс 1 — флагман (обобщённая ниша) -->
-    <article class="case flag">
-      <div class="cniche">Базовая женская одежда · сезонный вывод</div>
-      <div class="ct">Зашёл в наборы вместо одиночек — и вывел новинку в ТОП-2</div>
-      <div class="crow"><span class="clbl">Ситуация</span> фабрика задержала производство, по плану были одиночные позиции. На упаковке разобрал рынок: конкуренты сильно продают наборами. Решил заходить наборами — товара столько же, но в штуках на WB меньше: быстрее выход и меньше риск, если не пойдёт.</div>
-      <div class="crow"><span class="clbl">Что сделал</span> со старта залил рекламу, разобрал конкурента и повторил сильный контент; пробная партия ~900 шт разошлась сразу → заказал крупную и распределил по складам; расширил SEO на широкие запросы, выкупал жирные ключи; ценником регулировал спрос — старт выше на пике сезона, дальше баланс цена/качество.</div>
-      <div class="crow"><span class="clbl">Результат</span> <b>ТОП-2 в нише</b> за один сезон.</div>
+    <details class="case flag">
+      <summary class="chead">
+        <div class="chead-txt">
+          <div class="cniche">Базовая женская одежда · сезонный вывод</div>
+          <div class="ct">Зашёл в наборы вместо одиночек — и вывел новинку в ТОП-2</div>
+        </div>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="cbody">
+      <div class="crow"><span class="clbl">Ситуация</span><span>фабрика задержала производство, по плану были одиночные позиции. На упаковке разобрал рынок: конкуренты сильно продают наборами. Решил заходить наборами — товара столько же, но в штуках на WB меньше: быстрее выход и меньше риск, если не пойдёт.</span></div>
+      <div class="crow"><span class="clbl">Что сделал</span><span>со старта залил рекламу, разобрал конкурента и повторил сильный контент; пробная партия ~900 шт разошлась сразу → заказал крупную и распределил по складам; расширил SEO на широкие запросы, выкупал жирные ключи; ценником регулировал спрос — старт выше на пике сезона, дальше баланс цена/качество.</span></div>
+      <div class="crow"><span class="clbl">Результат</span><span><b>ТОП-2 в нише</b> за один сезон.</span></div>
       <div class="funnel">
         <i>CTR ~15%</i><span class="ar">→</span><i>CR 4–5%</i><span class="ar">→</span><i>выкуп 60%</i>
       </div>
@@ -379,16 +414,32 @@
         </div>
         <div class="chartnote">Помесячная динамика за пиковую часть сезона (март–август 2025): управляемый вход, пик в июне, и снежный ком отзывов — с 237 до 2 249, который дальше сам удешевляет каждую следующую продажу.</div>
       </div>
-    </article>
+      </div>
+    </details>
 
     <!-- Кейс 2 — реальный, креативный (старый кабинет, другая ниша) -->
-    <article class="case">
-      <div class="cniche">Игрушки · работа с неликвидом</div>
-      <div class="ct">Распродал 160 шт брака за месяц — без демпинга, через креатив</div>
-      <div class="crow"><span class="clbl">Ситуация</span> партия мягкой игрушки пришла с браком — швы, пятна, торчащие нитки. 160 шт неликвида, который «в лоб» продавался бы только в минус скидкой.</div>
-      <div class="crow"><span class="clbl">Что сделал</span> вместо демпинга собрал карточку-историю: персонаж «заражён», а покупатель его спасает — «зашивает раны», убирает «паразитов» и выкладывает фото спасённого героя в отзывы. Брак превратился в игровую механику и в поток UGC.</div>
-      <div class="crow"><span class="clbl">Результат</span> весь неликвид ушёл <b>меньше чем за месяц</b>, рейтинг 4.9★, отзывы в стиле «я спасла своего героя!» — контент, который сам продавал следующим покупателям.</div>
-    </article>
+    <details class="case">
+      <summary class="chead">
+        <div class="chead-txt">
+          <div class="cniche">Игрушки · работа с неликвидом</div>
+          <div class="ct">Распродал 160 шт брака за месяц — без демпинга, через креатив</div>
+        </div>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="cbody">
+      <div class="crow"><span class="clbl">Ситуация</span><span>партия мягкой игрушки пришла с браком — швы, пятна, торчащие нитки. 160 шт неликвида, который «в лоб» продавался бы только в минус скидкой.</span></div>
+      <div class="crow"><span class="clbl">Что сделал</span><span>вместо демпинга собрал карточку-историю: персонаж «заражён», а покупатель его спасает — «зашивает раны», убирает «паразитов» и выкладывает фото спасённого героя в отзывы. Брак превратился в игровую механику и в поток UGC.</span></div>
+      <div class="crow"><span class="clbl">Результат</span><span>весь неликвид ушёл <b>меньше чем за месяц</b>, рейтинг 4.9★, отзывы в стиле «я спасла своего героя!» — контент, который сам продавал следующим покупателям.</span></div>
+
+      <div class="glabel">Контент карточки — брак превращён в игровую механику:</div>
+      <div class="gallery">
+        <a href="assets/case1.jpg" target="_blank" rel="noopener"><img src="assets/case1.jpg" alt="Обложка: Cosmo Pou в скафандре" loading="lazy"></a>
+        <a href="assets/case2.jpg" target="_blank" rel="noopener"><img src="assets/case2.jpg" alt="Заражён белыми червями — спасёте?" loading="lazy"></a>
+        <a href="assets/case3.jpg" target="_blank" rel="noopener"><img src="assets/case3.jpg" alt="Зашей раны или избавь от червей" loading="lazy"></a>
+        <a href="assets/case4.jpg" target="_blank" rel="noopener"><img src="assets/case4.jpg" alt="UGC-отзывы, рейтинг 4.9" loading="lazy"></a>
+      </div>
+      </div>
+    </details>
 
   </section>
 
