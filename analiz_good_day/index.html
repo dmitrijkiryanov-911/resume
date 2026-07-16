@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Аудит кабинета Good Day — Выводы и рекомендации</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; background: #f5f6fa; color: #1a1d2e; line-height: 1.6; }
+
+  .header { background: linear-gradient(135deg, #1a1d2e 0%, #2d3561 100%); color: white; padding: 52px 60px 44px; }
+  .header-label { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #8b92c9; margin-bottom: 12px; }
+  .header h1 { font-size: 34px; font-weight: 700; margin-bottom: 8px; }
+  .header-sub { font-size: 15px; color: #a0a8d8; }
+  .header-meta { display: flex; gap: 32px; margin-top: 30px; flex-wrap: wrap; }
+  .meta-item { display: flex; flex-direction: column; }
+  .meta-label { font-size: 11px; color: #8b92c9; text-transform: uppercase; letter-spacing: 1px; }
+  .meta-value { font-size: 18px; font-weight: 600; color: #fff; margin-top: 2px; }
+
+  .container { max-width: 1000px; margin: 0 auto; padding: 48px 60px; }
+
+  .section-title { font-size: 18px; font-weight: 700; color: #1a1d2e; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .section-title::before { content: ''; display: block; width: 4px; height: 20px; background: #4a6cf7; border-radius: 2px; }
+
+  /* Вывод-карточки */
+  .conclusions { display: flex; flex-direction: column; gap: 16px; margin-bottom: 52px; }
+  .conclusion-card { background: #fff; border-radius: 14px; padding: 26px 30px; box-shadow: 0 2px 14px rgba(0,0,0,0.06); display: flex; gap: 20px; }
+  .conclusion-num { flex-shrink: 0; width: 36px; height: 36px; background: #4a6cf7; color: #fff; font-size: 15px; font-weight: 700; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+  .conclusion-body { flex: 1; }
+  .conclusion-title { font-size: 15px; font-weight: 700; color: #1a1d2e; margin-bottom: 8px; line-height: 1.4; }
+  .conclusion-text { font-size: 13.5px; color: #4a4d65; line-height: 1.75; }
+  .conclusion-text p { margin-bottom: 6px; }
+  .conclusion-text p:last-child { margin-bottom: 0; }
+  .conclusion-text ul { margin: 8px 0 4px 0; padding-left: 0; list-style: none; }
+  .conclusion-text ul li { padding: 4px 0 4px 18px; position: relative; color: #4a4d65; font-size: 13.5px; }
+  .conclusion-text ul li::before { content: '→'; position: absolute; left: 0; color: #4a6cf7; font-weight: 700; }
+
+  .callout { padding: 12px 16px; border-radius: 8px; font-size: 13px; line-height: 1.6; margin-top: 10px; }
+  .callout-blue { background: #f0f7ff; color: #1565c0; border-left: 3px solid #4a6cf7; }
+  .callout-yellow { background: #fff8e1; color: #7a5800; border-left: 3px solid #f9a825; }
+  .callout-red { background: #fff9f9; color: #c62828; border-left: 3px solid #ef5350; }
+  .callout-green { background: #f0f9f4; color: #1b5e20; border-left: 3px solid #43a047; }
+
+  .hl { font-weight: 700; color: #1a1d2e; }
+  .hl-red { font-weight: 700; color: #d32f2f; }
+  .hl-green { font-weight: 700; color: #2e7d32; }
+  .hl-blue { font-weight: 700; color: #1565c0; }
+
+  /* Аудиты по нишам */
+  .audits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px; }
+  .audit-card { background: #fff; border-radius: 14px; padding: 22px 24px; box-shadow: 0 2px 14px rgba(0,0,0,0.06); text-decoration: none; color: inherit; transition: transform 0.15s, box-shadow 0.15s; display: flex; flex-direction: column; gap: 10px; }
+  .audit-card:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(74,108,247,0.12); }
+  .audit-icon { font-size: 28px; }
+  .audit-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #4a6cf7; }
+  .audit-name { font-size: 15px; font-weight: 700; color: #1a1d2e; line-height: 1.3; }
+  .audit-meta { font-size: 12px; color: #8b92b2; }
+  .audit-arrow { font-size: 13px; color: #4a6cf7; font-weight: 700; margin-top: auto; }
+
+  .footer { text-align: center; padding: 30px; font-size: 12px; color: #b0b4cc; border-top: 1px solid #eee; margin-top: 10px; }
+
+  @media (max-width: 768px) {
+    .header { padding: 32px 20px; }
+    .container { padding: 28px 20px; }
+    .audits-grid { grid-template-columns: 1fr; }
+    .conclusion-card { flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">Внешний аудит кабинета · Good Day</div>
+  <h1>Итоговые выводы и рекомендации</h1>
+  <div class="header-sub">Wildberries · Период: 15 июня — 14 июля 2026</div>
+  <div class="header-meta">
+    <div class="meta-item"><span class="meta-label">Категорий проанализировано</span><span class="meta-value">5</span></div>
+    <div class="meta-item"><span class="meta-label">SKU в аудите</span><span class="meta-value">36+</span></div>
+    <div class="meta-item"><span class="meta-label">Рекомендаций</span><span class="meta-value">10</span></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="section-title">Стратегические выводы</div>
+  <div class="conclusions">
+
+    <!-- 1 -->
+    <div class="conclusion-card">
+      <div class="conclusion-num">1</div>
+      <div class="conclusion-body">
+        <div class="conclusion-title">Рассмотреть выход на Озон</div>
+        <div class="conclusion-text">
+          <p>По всем проанализированным нишам Озон показывает <span class="hl">в 2–3 раза больший объём рынка</span> при меньшей конкуренции и более высоком среднем чеке. Это не значит уходить с ВБ — но параллельное присутствие на Озоне может дать значительный прирост выручки практически без изменения товарной матрицы.</p>
+          <div class="callout callout-blue">Ближайший шаг: проверить юнит-экономику под Озон (комиссии, логистика, FBO/FBS) для 2–3 топовых SKU. Особенно актуально для электроники и отпаривателей — там разрыв с ВБ максимальный.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="conclusion-card">
+      <div class="conclusion-num">2</div>
+      <div class="conclusion-body">
+        <div class="conclusion-title">Отзывы — 1,5 месяца тишины. Это продажа недоверия.</div>
+        <div class="conclusion-text">
+          <p>В кабинете <span class="hl-red">нет ответов на отзывы с начала июня</span>. Часть ответов до этого были написаны в неудачной редакции — шаблонно, без вовлечённости, а местами с нейронкой без правил (особенно критично на проблемных товарах).</p>
+          <p>Каждый неотвеченный негативный отзыв — это антипродажа для следующего покупателя. При рейтинге 4,2 у ряда SKU и 20–33% негатива — это прямой вред конверсии.</p>
+          <div class="callout callout-red">Приоритет №1: разобрать накопленный негатив, сформировать шаблоны ответов под каждую категорию и выстроить систему регулярной работы с отзывами.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="conclusion-card">
+      <div class="conclusion-num">3</div>
+      <div class="conclusion-body">
+        <div class="conclusion-title">Соответствие контента — базовая гигиена, которой нет</div>
+        <div class="conclusion-text">
+          <p>Во всех 5 категориях обнаружены <span class="hl-red">расхождения между контентом, описанием и характеристиками</span>: разные цифры мощности на разных слайдах, НЕРА-фильтры упомянуты в одном месте и отсутствуют в другом, шнур 1,5 м в контенте и 1,4 м в характеристиках.</p>
+          <p>Алгоритм ВБ считывает всё. Любое несоответствие — это штрафные баллы ранжирования. Карточка может быть хорошей, но алгоритм будет показывать её хуже из-за технических ошибок.</p>
+          <div class="callout callout-yellow">Решение: пройтись по каждой карточке с чеклистом: заголовок → характеристики → описание → контент → вопросы. Всё должно говорить одно и то же.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="conclusion-card">
+      <div class="conclusion-num">4</div>
+      <div class="conclusion-body">
+        <div class="conclusion-title">Стратегия вывода товара — у каждого запуска должен быть план</div>
+        <div class="conclusion-text">
+          <p>Ни один из проанализированных выводов товаров не включал видимого плана. Товар появлялся на площадке — и дальше без системы. Итог: деньги заморожены, позиций нет, информации не получили. Как должен выглядеть правильный запуск:</p>
+          <ul>
+            <li><b>Малая партия (100 шт)</b> — проверка на ФФ: работоспособность, комплектация, упаковка. Только проверенный товар идёт дальше.</li>
+            <li><b>Разброс на центральные склады</b> — приоритет ЦФО, там 35–40% заказов по большинству ниш.</li>
+            <li><b>3–5 выкупов со старта</b> — с видео, ответами на боли, закрытием ключевых возражений. Вопросы в карточку — с хорошими ответами. Контент не хуже топ-конкурента.</li>
+            <li><b>Первый органический отзыв → усиленная реклама</b> для набора органики.</li>
+            <li><b>Органика пошла → анализ реакции рынка:</b> выкуп, качество отзывов, вопрос «товар ок или нет».</li>
+            <li><b>Товар ок → большая партия (300–500 шт)</b> с учётом этапа сезона, раскладка по всем релевантным складам, работа с CTR и конверсией.</li>
+          </ul>
+          <div class="callout callout-blue">Главный принцип: малая партия — это не экономия, это проверка гипотезы. Большие деньги вкладываются только в подтверждённую модель.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="conclusion-card">
+      <div class="conclusion-num">5</div>
+      <div class="conclusion-body">
+        <div class="conclusion-title">Спецодежда для рыбалки и охоты — ниша с высоким средним чеком</div>
+        <div class="conclusion-text">
+          <p>Если рыболовное направление интересно — стоит рассмотреть категорию <span class="hl">специализированной одежды для рыбалки и охоты</span>. Средний чек там существенно выше, чем на снасти и аксессуары. По экономике может сходиться лучше. Одежда в целом показывает более стабильный спрос.</p>
+          <div class="callout callout-yellow">Оговорка: по ощущениям, Озон в этой нише тоже может быть интереснее ВБ. Перед заходом стоит сравнить объём рынка и средний чек на обеих площадках.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="conclusion-card">
+      <div class="conclusion-num">6</div>
+      <div class="conclusion-body">
+        <div class="conclusion-title">Рыболовный сезон — заходить перед летом, не держать товар целый год</div>
+        <div class="conclusion-text">
+          <p>Рыболовный сезон хорошо ограничен: весна — пик, осень — остаток, зима — мёртвая зона. <span class="hl">Садки — классический сезонный товар</span>: завёз перед сезоном, заработал весной, продал остатки в мае. Не нужно держать склад круглый год.</p>
+          <p>Это принципиально отличает сезонные товары от круглогодичных: здесь можно точечно зайти, отработать сезон и выйти — без заморозки денег на 8 месяцев.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="conclusion-card">
+      <div class="conclusion-num">7</div>
+      <div class="conclusion-body">
+        <div class="conclusion-title">Каждая карточка — отдельный бизнес-юнит. Единого стандарта нет.</div>
+        <div class="conclusion-text">
+          <p>В кабинете нет системы: где-то 4 фото, где-то 8, где-то есть видео, где-то нет, описания разной длины и качества. Это не мелочи — это потеря конверсии на каждой карточке.</p>
+          <p>Каждая карточка должна проходить один и тот же стандарт запуска:</p>
+          <ul>
+            <li>Заголовок по семантике топ-конкурентов</li>
+            <li>10–12 слайдов (закрытие возражений, комплектация, гарантия, УТП)</li>
+            <li>Видео (хотя бы анимация или распаковка)</li>
+            <li>Характеристики заполнены полностью, соответствуют контенту</li>
+            <li>Вопросы в карточке — с хорошими ответами</li>
+          </ul>
+          <div class="callout callout-blue">Сделайте чеклист запуска карточки и не выводите товар без его прохождения. Это дешевле, чем переделывать после.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="conclusion-card">
+      <div class="conclusion-num">8</div>
+      <div class="conclusion-body">
+        <div class="conclusion-title">Замороженные деньги — дороже любого убытка от скидки</div>
+        <div class="conclusion-text">
+          <p>В кабинете <span class="hl-red">более 600 000 ₽ заморожено в неликвидных остатках</span>: 374 784 ₽ в одном артикуле отпаривателей с оборачиваемостью 568 дней, 158 858 ₽ — в другом. Эти деньги не работают.</p>
+          <p>Пока деньги заморожены в остатках — нет возможности закупить товар, который реально продаётся. Это не просто убыток, это упущенная выручка на каждый месяц заморозки.</p>
+          <div class="callout callout-red">Слить со скидкой и вернуть деньги в оборот — это правильное решение, а не признание провала. Главный менеджерский инстинкт здесь: «отпустить» и направить деньги туда, где они работают.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="conclusion-card">
+      <div class="conclusion-num">9</div>
+      <div class="conclusion-body">
+        <div class="conclusion-title">До 5–7 млн ₽ оборота — фокус на нише важнее широты ассортимента</div>
+        <div class="conclusion-text">
+          <p>Текущая товарная матрица — 5 разных категорий (рыбалка, электроника, бытовая техника). При таком разбросе <span class="hl">оборотных денег не хватает</span>, чтобы поддерживать актуальные остатки и достаточный рекламный бюджет по всем направлениям одновременно.</p>
+          <p>Фокус на одной нише или поднише позволяет: глубоко разобраться в категории, стать «специалистом» в глазах алгоритма, грамотно перераспределить рекламный бюджет и поддерживать склад в нужных объёмах.</p>
+          <div class="callout callout-yellow">Выбрать 1–2 категории с лучшей экономикой → сосредоточить на них ресурсы → масштабировать. Остальное — продать и освободить оборот.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="conclusion-card">
+      <div class="conclusion-num">10</div>
+      <div class="conclusion-body">
+        <div class="conclusion-title">Договорённости с поставщиками по электронике — стоит пересмотреть</div>
+        <div class="conclusion-text">
+          <p>По всем признакам, товары из Китая по электронике поступают <span class="hl">на уровне не лучше, а возможно хуже</span> топ-конкурентов. Это нормально для схем, когда поставщик продаёт то, что у него хорошо берут (Амазон, внутренний рынок Китая) — но не то, что оптимально для российского маркетплейса.</p>
+          <p>Две схемы работы с китайцами, на которые стоит обратить внимание:</p>
+          <ul>
+            <li><b>Товар как у поставщика «топовый»</b> — значит, его уже берут много и везде. Конкуренция на ВБ будет жёсткой, маржа сжатой.</li>
+            <li><b>Отсрочка 3 месяца</b> — можно оборачивать товар бесплатно и платить поставщику деньгами ВБ. При правильной модели это значит: оборачиваемость важнее маржи, и это меняет всю логику выбора товара.</li>
+          </ul>
+          <div class="callout callout-blue">Стоит пересмотреть, какие условия вы получаете от поставщика, и есть ли возможность искать товар через нишевые фабрики, а не у крупных перекупщиков.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══ АУДИТЫ ПО НИШАМ ═══ -->
+  <div class="section-title">Детальный анализ по категориям</div>
+  <div class="audits-grid">
+    <a class="audit-card" href="micro.html">
+      <div class="audit-icon">🎙</div>
+      <div class="audit-label">Аудит категории</div>
+      <div class="audit-name">Микрофоны</div>
+      <div class="audit-meta">8 SKU · 197 947 ₽ за 30 дней</div>
+      <div class="audit-arrow">Открыть →</div>
+    </a>
+    <a class="audit-card" href="fishing.html">
+      <div class="audit-icon">🎣</div>
+      <div class="audit-label">Аудит категории</div>
+      <div class="audit-name">Рыболовные товары</div>
+      <div class="audit-meta">23 SKU · 749 747 ₽ за 30 дней</div>
+      <div class="audit-arrow">Открыть →</div>
+    </a>
+    <a class="audit-card" href="fishing2.html">
+      <div class="audit-icon">🎣</div>
+      <div class="audit-label">Аудит категории</div>
+      <div class="audit-name">Рыболовные товары — часть 2</div>
+      <div class="audit-meta">Чехлы, садки — детальный разбор</div>
+      <div class="audit-arrow">Открыть →</div>
+    </a>
+    <a class="audit-card" href="vacuums.html">
+      <div class="audit-icon">🔌</div>
+      <div class="audit-label">Аудит категории</div>
+      <div class="audit-name">Авто-пылесосы</div>
+      <div class="audit-meta">2 SKU · 205 658 ₽ за 30 дней</div>
+      <div class="audit-arrow">Открыть →</div>
+    </a>
+    <a class="audit-card" href="steamers.html">
+      <div class="audit-icon">♨️</div>
+      <div class="audit-label">Аудит категории</div>
+      <div class="audit-name">Отпариватели</div>
+      <div class="audit-meta">3 SKU · 185 884 ₽ за 30 дней</div>
+      <div class="audit-arrow">Открыть →</div>
+    </a>
+  </div>
+
+</div>
+
+<div class="footer">Аудит подготовлен · Good Day · 15 июля 2026</div>
+
+</body>
+</html>
